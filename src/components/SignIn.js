@@ -1,7 +1,7 @@
 import React from 'react';
 
-class SignIn extends React.Component {
-
+//class SignIn extends React.Component {
+/*
   constructor (props) {
     super(props);
     this.state = {
@@ -35,8 +35,9 @@ class SignIn extends React.Component {
     })
   }
 */
-  render(){
-    const { onRouteChange } = this.props;
+  // render(){
+  //  const { onRouteChange } = this.props;
+  const SignIn = ({ onRouteChange }) =>{
     return(
       <article className="br3 ba b--black-10 mv4 w-100 w-50-m w-25-l mw6 shadow-5 center">
       <main className="pa4 black-80">
@@ -50,7 +51,7 @@ class SignIn extends React.Component {
           type="email" 
           name="email-address"  
           id="email-address" 
-          onChange={this.onEmailChange}
+          //onChange={this.onEmailChange}
           />
         </div>
         <div className="mv3">
@@ -60,13 +61,13 @@ class SignIn extends React.Component {
           type="password" 
           name="password"  
           id="password" 
-          onChange={this.onPasswordChange}
+          //onChange={this.onPasswordChange}
           />
         </div>
       </fieldset>
       <div className="">
         <input 
-        onClick={this.onSubmitSignIn}
+        onClick={() => onRouteChange('home')}
         className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib" 
         type="submit" 
         value="Iniciar Sesion"
@@ -77,6 +78,6 @@ class SignIn extends React.Component {
   </article>
      );
   }
-}
+//            }
 
 export default SignIn

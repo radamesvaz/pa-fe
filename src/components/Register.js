@@ -16,7 +16,7 @@ class Register extends React.Component{
   onPasswordChange = (event) => {
     this.setState({password: event.target.value})
   }
-
+/*
   onSubmitSignIn = () => {
     fetch('https://sleepy-scrubland-26722.herokuapp.com/register', {
       method: 'post',
@@ -33,10 +33,10 @@ class Register extends React.Component{
         this.props.loadUser(user);
         this.props.onRouteChange('home');
         
-      }*/
+      
     })
   }
-
+*/
   render() {
     return(
       <article className="br3 ba b--black-10 mv4 w-100 w-50-m w-25-l mw6 shadow-5 center">
