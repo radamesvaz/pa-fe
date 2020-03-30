@@ -5,13 +5,13 @@ class SignIn extends React.Component {
   constructor (props) {
     super(props);
     this.state = {
-      signInEmail: '',
+      signUser: '',
       signInPassword: ''
     }
   }
 
   onEmailChange = (event) => {
-    this.setState({signInEmail: event.target.value})
+    this.setState({signUser: event.target.value})
   }
   onPasswordChange = (event) => {
     this.setState({signInPassword: event.target.value})
@@ -22,7 +22,7 @@ class SignIn extends React.Component {
       method: 'post',
       headers: {'Content-type': 'application/json'},
       body: JSON.stringify({
-        email: this.state.signInEmail,
+        email: this.state.signUser,
         password: this.state.signInPassword
       })
     })
