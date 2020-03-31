@@ -74,6 +74,7 @@ import React from 'react';
         />
       </div>
     </div>
+    <p onClick={() => onRouteChange('register')} className='pointer'>Registrar</p>
   </main>
   </article>
      );
