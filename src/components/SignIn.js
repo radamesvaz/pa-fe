@@ -1,7 +1,7 @@
 import React from 'react';
 
-//class SignIn extends React.Component {
-/*
+class SignIn extends React.Component {
+
   constructor (props) {
     super(props);
     this.state = {
@@ -10,34 +10,41 @@ import React from 'react';
     }
   }
 
-  onEmailChange = (event) => {
+  onUserChange = (event) => {
     this.setState({signUser: event.target.value})
   }
   onPasswordChange = (event) => {
     this.setState({signInPassword: event.target.value})
   }
-/*
+
   onSubmitSignIn = () => {
-    fetch('https://sleepy-scrubland-26722.herokuapp.com/signin', {
+    fetch('http://localhost:3000/signin', {
       method: 'post',
       headers: {'Content-type': 'application/json'},
       body: JSON.stringify({
-        email: this.state.signUser,
+        user: this.state.signUser,
         password: this.state.signInPassword
       })
     })
+    
     .then(response => response.json())
+    .then(data => {
+      if(data === 'acceso garantizado'){
+        this.props.onRouteChange('home');
+      }
+    })
+    /*
     .then(user => {
       if(user.id){
         this.props.loadUser(user);
         this.props.onRouteChange('home');
       }
-    })
+    })*/
   }
-*/
-  // render(){
-  //  const { onRouteChange } = this.props;
-  const SignIn = ({ onRouteChange }) =>{
+
+   render(){
+    const { onRouteChange } = this.props;
+ //const SignIn = ({ onRouteChange }) =>{
     return(
       <article className="br3 ba b--black-10 mv4 w-100 w-50-m w-25-l mw6 shadow-5 center">
       <main className="pa4 black-80">
@@ -51,7 +58,7 @@ import React from 'react';
           type="email" 
           name="email-address"  
           id="email-address" 
-          //onChange={this.onEmailChange}
+          onChange={this.onUserChange}
           />
         </div>
         <div className="mv3">
@@ -61,13 +68,13 @@ import React from 'react';
           type="password" 
           name="password"  
           id="password" 
-          //onChange={this.onPasswordChange}
+          onChange={this.onPasswordChange}
           />
         </div>
       </fieldset>
       <div className="">
         <input 
-        onClick={() => onRouteChange('home')}
+        onClick={this.onSubmitSignIn}
         className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib" 
         type="submit" 
         value="Iniciar Sesion"
@@ -79,6 +86,6 @@ import React from 'react';
   </article>
      );
   }
-//            }
+           }
 
 export default SignIn
