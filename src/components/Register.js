@@ -1,5 +1,5 @@
 import React from 'react';
-/*
+
 class Register extends React.Component{
 
   constructor (props) {
@@ -16,29 +16,36 @@ class Register extends React.Component{
   onPasswordChange = (event) => {
     this.setState({password: event.target.value})
   }
-/*
+
   onSubmitSignIn = () => {
-    fetch('https://sleepy-scrubland-26722.herokuapp.com/register', {
+    fetch('http://localhost:3000/register', {
       method: 'post',
       headers: {'Content-type': 'application/json'},
       body: JSON.stringify({
-        usuario: this.state.usuario,
+        user: this.state.usuario,
         password: this.state.password,
       })
     })
     .then(response => response.json())
     .then(user => {
-        console.log(user);        /*
+      if(user){
+        console.log(user);
+        this.props.onRouteChange('home');
+      }
+    
+     /*
       if(user.id){
         this.props.loadUser(user);
         this.props.onRouteChange('home');
         
       
-    })
+    })*/
   }
-*/
-const Register = ({ onRouteChange }) => {
-  //render() {
+    )}
+
+//const Register = ({ onRouteChange }) => {
+  render() {
+    const { onRouteChange } = this.props;
     return(
       <article className="br3 ba b--black-10 mv4 w-100 w-50-m w-25-l mw6 shadow-5 center">
       <main className="pa4 black-80">
@@ -52,7 +59,7 @@ const Register = ({ onRouteChange }) => {
           type="email" 
           name="email-address"  
           id="email-address" 
-         // onChange={this.onUsuarioChange}
+          onChange={this.onUsuarioChange}
           />
         </div>
         <div className="mv3">
@@ -62,14 +69,13 @@ const Register = ({ onRouteChange }) => {
           type="password" 
           name="password"  
           id="password" 
-         // onChange={this.onPasswordChange}
+          onChange={this.onPasswordChange}
           />
         </div>
       </fieldset>
       <div className="">
         <input 
-        //onClick={this.onSubmitSignIn}
-        onClick={()=> onRouteChange('home')}
+        onClick={this.onSubmitSignIn}
         className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib" 
         type="submit" 
         value="Registrar"
@@ -85,6 +91,6 @@ const Register = ({ onRouteChange }) => {
       );
   }
    
-//}
+}
 
 export default Register
