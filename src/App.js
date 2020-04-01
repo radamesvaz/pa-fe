@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Navigation from './components/Navigation';
 import SignIn from './components/SignIn';
 import Register from './components/Register';
-import Home from './components/Home'
+import Agregar from './components/Agregar'
 
 class App extends Component {
   constructor(){
@@ -31,7 +31,7 @@ class App extends Component {
          this.state.route === 'home'
           ?
           <div>
-            <Home /> 
+            <Agregar /> 
           </div>
           : (
             this.state.route === 'signout'

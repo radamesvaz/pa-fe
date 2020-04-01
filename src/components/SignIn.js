@@ -17,7 +17,7 @@ class SignIn extends React.Component {
     this.setState({signInPassword: event.target.value})
   }
 
-  onSubmitSignIn = () => {
+  onSubmitSignIn = () => {/*
     fetch('http://localhost:3000/signin', {
       method: 'post',
       headers: {'Content-type': 'application/json'},
@@ -29,10 +29,10 @@ class SignIn extends React.Component {
     
     .then(response => response.json())
     .then(data => {
-      if(data === 'acceso garantizado'){
+      if(data === 'acceso garantizado'){*/
         this.props.onRouteChange('home');
-      }
-    })
+    //  }
+  //  })
     /*
     .then(user => {
       if(user.id){
