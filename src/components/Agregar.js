@@ -8,6 +8,7 @@ class Agregar extends Component {
     tipo: '',
     modelo: '',
     precio: '',
+    link: '',
     file: null,
     display: 'block',
     message: 'none'
@@ -30,6 +31,11 @@ class Agregar extends Component {
     this.setState({ precio: precio })
   }
 
+  handleLink(e){
+    let link = e.target.value;
+    this.setState({ link: link });
+  }
+
   handleFile(e){
     let file = e.target.files[0];
     this.setState({ file: file})
@@ -40,11 +46,13 @@ class Agregar extends Component {
     let tipo = this.state.tipo;
     let modelo = this.state.modelo;
     let precio = this.state.precio;
+    let link = this.state.link;
     let file = this.state.file;
     let formdata = new FormData();
     formdata.append('tipo', tipo);
     formdata.append('modelo', modelo);
-    formdata.append('precio', precio)
+    formdata.append('precio', precio);
+    formdata.append('link', link);
     formdata.append('image', file);
     axios({
       url: 'http://localhost:3000/upload-images',
@@ -56,12 +64,13 @@ class Agregar extends Component {
     })//.then(response => response.json())
     .then(data => {
       if(data.data === 'exito'){
-       console.log('imprimiendo la data exitosa!!!', data.data );
-       this.setState({ tipo: '' })
-       this.setState({ modelo: '' })
-       this.setState({ precio: '' })
-       this.setState({ display: 'block' })
-       this.setState({ message: 'block' })
+       console.log('imprimiendo la data exitosa!!!', data );
+       this.setState({ tipo: '' });
+       this.setState({ modelo: '' });
+       this.setState({ precio: '' });
+       this.setState({ link: '' });
+       this.setState({ display: 'block' });
+       this.setState({ message: 'block' });
       }
   })
   }
@@ -72,63 +81,81 @@ class Agregar extends Component {
     render(){
         return(
           <article className="br3 ba b--black-10 mv4 w-100 w-50-m w-25-l mw6 shadow-5 center">
-          <input 
-          className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" 
-          type="text"
-          name="tipo"
-          id="tipo"
-          value={this.state.tipo}
-          placeholder="tipo de accesorio"
-          onChange={(e) => this.handleTipo(e)}
-        />
-          <input 
-          className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" 
-          type="text"
-          name="modelo"
-          id="modelo"
-          value={this.state.modelo}
-          placeholder="modelo"
-          onChange={(e) => this.handleModelo(e)}
-        />
-          <input 
-          className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" 
-          type="text"
-          name="precio"
-          id="precio"
-          value={this.state.precio}
-          placeholder="precio"
-          onChange={(e) => this.handlePrecio(e)}
-        />
-            <div className="container">
-            
-            <div className="row">
-              <div className="offset-md-3 col-md-6">
-                 <div className="form-group files">
-                  <label>Sube una imagen</label>
-                  <input 
-                  type="file" 
-                  className="form-control" 
-                  name="file"
-                  onChange={(e) => this.handleFile(e)}
-                  />
-                </div>  
-                
 
+           <main className="pa4 black-80">
+
+             <div className="measure">
+
+              <fieldset id="sign_up" className="ba b--transparent ph0 mh0">
+
+              <label className="db fw6 lh-copy f6" htmlFor="email-address">Tipo de accesorio</label>
+                <input 
+                className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" 
+                type="text"
+                name="tipo"
+                id="tipo"
+                value={this.state.tipo}
+                placeholder="tipo de accesorio"
+                onChange={(e) => this.handleTipo(e)}
+              />
+              <label className="db fw6 lh-copy f6" htmlFor="email-address">Modelo</label>
+                <input 
+                className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" 
+                type="text"
+                name="modelo"
+                id="modelo"
+                value={this.state.modelo}
+                placeholder="modelo"
+                onChange={(e) => this.handleModelo(e)}
+              />
+              <label className="db fw6 lh-copy f6" htmlFor="email-address">Precio</label>
+                <input 
+                className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" 
+                type="text"
+                name="precio"
+                id="precio"
+                value={this.state.precio}
+                placeholder="precio"
+                onChange={(e) => this.handlePrecio(e)}
+              />
+
+                <label className="db fw6 lh-copy f6" htmlFor="email-address">Link</label>
+                <input 
+                className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" 
+                type="text"
+                name="link"
+                id="link"
+                value={this.state.link}
+                placeholder="link de instagram"
+                onChange={(e) => this.handleLink(e)}
+              />
+
+                <label>Sube una imagen</label>
+                <input 
+                type="file" 
+                className="form-control bg-transparent w-100 pv3" 
+                name="file"
+                onChange={(e) => this.handleFile(e)}
+                />
+                      
                 <button 
                 onClick={(e) => this.onSubmitAcc(e)}
-                className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib" 
+                className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib pv3" 
                 style={{display: this.state.display}} 
                 type="button" 
                 >Agregar</button>
-                
-    
-            </div>
-        </div>
-        </div>
+      
+                <h1 style={{display: this.state.message}}>¡Articulo agregado con Exito!</h1>
 
-          <h1 style={{display: this.state.message}}>¡Articulo agregado con Exito!</h1>
+              </fieldset>
+
+            </div>
+
+          </main>
 
         </article>
+
+
         )
 
     }
