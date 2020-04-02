@@ -8,13 +8,16 @@ class Agregar extends Component {
     tipo: '',
     modelo: '',
     precio: '',
-    file: null
+    file: null,
+    display: 'block',
+    message: 'none'
 
   }
 
   handleTipo(e){
     let tipo = e.target.value;
     this.setState({ tipo: tipo })
+    this.setState({ message: 'none' })
   }
 
   handleModelo(e){
@@ -33,18 +36,16 @@ class Agregar extends Component {
   }
 
   onSubmitAcc = (e) => {
+    this.setState({ display: 'none' });
     let tipo = this.state.tipo;
     let modelo = this.state.modelo;
     let precio = this.state.precio;
     let file = this.state.file;
-
     let formdata = new FormData();
-
     formdata.append('tipo', tipo);
     formdata.append('modelo', modelo);
     formdata.append('precio', precio)
     formdata.append('image', file);
-
     axios({
       url: 'http://localhost:3000/upload-images',
       method: 'post',
@@ -52,14 +53,21 @@ class Agregar extends Component {
         authorization: ''
       },
       data: formdata
-    })/*.then(response => response.json())
-    .then(user => {
-      if(user){
-        console.log(user);
+    })//.then(response => response.json())
+    .then(data => {
+      if(data.data === 'exito'){
+       console.log('imprimiendo la data exitosa!!!', data.data );
+       this.setState({ tipo: '' })
+       this.setState({ modelo: '' })
+       this.setState({ precio: '' })
+       this.setState({ display: 'block' })
+       this.setState({ message: 'block' })
       }
-    })
-  */
+  })
   }
+
+  
+
 
     render(){
         return(
@@ -69,6 +77,7 @@ class Agregar extends Component {
           type="text"
           name="tipo"
           id="tipo"
+          value={this.state.tipo}
           placeholder="tipo de accesorio"
           onChange={(e) => this.handleTipo(e)}
         />
@@ -77,6 +86,7 @@ class Agregar extends Component {
           type="text"
           name="modelo"
           id="modelo"
+          value={this.state.modelo}
           placeholder="modelo"
           onChange={(e) => this.handleModelo(e)}
         />
@@ -85,6 +95,7 @@ class Agregar extends Component {
           type="text"
           name="precio"
           id="precio"
+          value={this.state.precio}
           placeholder="precio"
           onChange={(e) => this.handlePrecio(e)}
         />
@@ -94,12 +105,11 @@ class Agregar extends Component {
               <div className="offset-md-3 col-md-6">
                  <div className="form-group files">
                   <label>Sube una imagen</label>
-                  <input type="file" 
+                  <input 
+                  type="file" 
                   className="form-control" 
                   name="file"
                   onChange={(e) => this.handleFile(e)}
-                 // multiple onChange={this.onChangeHandler}
-    
                   />
                 </div>  
                 
@@ -107,6 +117,7 @@ class Agregar extends Component {
                 <button 
                 onClick={(e) => this.onSubmitAcc(e)}
                 className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib" 
+                style={{display: this.state.display}} 
                 type="button" 
                 >Agregar</button>
                 
@@ -114,6 +125,9 @@ class Agregar extends Component {
             </div>
         </div>
         </div>
+
+          <h1 style={{display: this.state.message}}>¡Articulo agregado con Exito!</h1>
+
         </article>
         )
 
