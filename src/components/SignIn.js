@@ -17,25 +17,25 @@ class SignIn extends React.Component {
     this.setState({signInPassword: event.target.value})
   }
 
-  onSubmitSignIn = () => {/*
+  onSubmitSignIn = () => {
     fetch('http://localhost:3000/signin', {
       method: 'post',
       headers: {'Content-type': 'application/json'},
       body: JSON.stringify({
-        user: this.state.signUser,
+        name: this.state.signUser,
         password: this.state.signInPassword
       })
     })
     
     .then(response => response.json())
     .then(data => {
-      if(data === 'acceso garantizado'){*/
+    if(data === 'acceso garantizado'){
         this.props.onRouteChange('home');
-    //  }
-  //  })
+      }
+    })
     /*
     .then(user => {
-      if(user.id){
+      if(user.name){
         this.props.loadUser(user);
         this.props.onRouteChange('home');
       }
