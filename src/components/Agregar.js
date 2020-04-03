@@ -64,7 +64,7 @@ class Agregar extends Component {
     })//.then(response => response.json())
     .then(data => {
       if(data.data === 'exito'){
-       console.log('imprimiendo la data exitosa!!!', data );
+       //console.log('imprimiendo la data exitosa!!!', data );
        this.setState({ tipo: '' });
        this.setState({ modelo: '' });
        this.setState({ precio: '' });
