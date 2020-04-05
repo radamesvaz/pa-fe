@@ -3,13 +3,18 @@ import Navigation from './components/Navigation';
 import SignIn from './components/SignIn';
 import Register from './components/Register';
 import Agregar from './components/Agregar'
+import Eliminar from './components/Eliminar';
+import Modificar from './components/Modificar';
 
 class App extends Component {
   constructor(){
     super();
     this.state = {
-      route: 'signin',
-      isSignedIn: false
+     // route: 'signin',
+     route: 'home',
+     // isSignedIn: false
+     isSignedIn: true,
+     id: ''
     }
   }
 
@@ -23,16 +28,27 @@ class App extends Component {
     this.setState({ route: route })
   }
 
+
   render(){
+
     return (
       <div className="App">
       <Navigation isSignedIn={this.state.isSignedIn} onRouteChange={this.onRouteChange}/>
        { 
+
+
          this.state.route === 'home'
           ?
-          <div>
-            <Agregar /> 
-          </div>
+            <Agregar />
+          :(
+            this.state.route === 'eliminar'
+            ?
+            <Eliminar />
+            :
+            <Modificar />
+          )
+        
+       /*
           : (
             this.state.route === 'signout'
             ?
@@ -40,7 +56,7 @@ class App extends Component {
             : 
             <Register onRouteChange={this.onRouteChange}/>
           )
-          
+*/
        }
       </div>
     );
