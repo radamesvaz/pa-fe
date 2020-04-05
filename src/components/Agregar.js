@@ -55,7 +55,7 @@ class Agregar extends Component {
     formdata.append('link', link);
     formdata.append('image', file);
     axios({
-      url: 'http://localhost:3000/upload-images',
+      url: 'https://obscure-depths-14752.herokuapp.com/upload-images',
       method: 'post',
       headers: {
         authorization: ''

@@ -13,7 +13,7 @@ function Eliminar (){
     
       useEffect(() => {
         // code to run on component mount
-        fetch('http://localhost:3000/home')
+        fetch('https://obscure-depths-14752.herokuapp.com/home')
         .then(response=> response.json())
         .then(users => {setState({...equipo, accesorios: users })})
       }, []);

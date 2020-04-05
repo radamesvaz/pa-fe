@@ -6,7 +6,7 @@ const Tarjeta = ({ nombre, modelo, precio, url, id }) => {
    const onBorrar = (id) => {
     axios({
         method: 'delete',
-        url: 'http://localhost:3000/delete',
+        url: 'https://obscure-depths-14752.herokuapp.com/delete',
         data: {
           id: id.toString()
         }
