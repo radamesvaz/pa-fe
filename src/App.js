@@ -10,11 +10,11 @@ class App extends Component {
   constructor(){
     super();
     this.state = {
-     // route: 'signin',
-     route: 'home',
-     // isSignedIn: false
-     isSignedIn: true,
-     id: ''
+      route: 'signin',
+    // route: 'home',
+      isSignedIn: false
+   //  isSignedIn: true,
+    // id: ''
     }
   }
 
@@ -37,6 +37,29 @@ class App extends Component {
        { 
 
 
+
+         this.state.route === 'signin' 
+         ?
+         <SignIn onRouteChange={this.onRouteChange} />
+         :(
+           this.state.route === 'register'
+           ?
+           <Register onRouteChange={this.onRouteChange}/>
+           :(
+            this.state.route === 'home'
+          ?
+            <Agregar />
+          :(
+            this.state.route === 'eliminar'
+            ?
+            <Eliminar />
+            :
+            <Modificar />
+          )
+           )
+         )
+
+/*
          this.state.route === 'home'
           ?
             <Agregar />
@@ -47,7 +70,7 @@ class App extends Component {
             :
             <Modificar />
           )
-        
+        */
        /*
           : (
             this.state.route === 'signout'
