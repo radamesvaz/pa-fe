@@ -72,11 +72,33 @@ class Agregar extends Component {
        this.setState({ display: 'block' });
        this.setState({ message: 'block' });
       }
+  })}/*
+  fetch('https://obscure-depths-14752.herokuapp.com/upload-images', {
+    method: 'post',
+    headers: {'Content-type': 'application/json'},
+    body: JSON.stringify({
+      name: 'hola'
+    })
   })
+  .then(response => response.json())
+  .then(user => {
+    if(user){
+      console.log(user);
+     // this.props.onRouteChange('home');
+    }
   }
+  )}
 
+  CREATE TABLE content(
+    id serial PRIMARY KEY,
+    name VARCHAR(30),
+    modelo VARCHAR(30),
+    precio VARCHAR(30),
+    link VARCHAR(110),
+    url VARCHAR(110)
+  );
   
-
+*/
 
     render(){
         return(
