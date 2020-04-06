@@ -72,33 +72,8 @@ class Agregar extends Component {
        this.setState({ display: 'block' });
        this.setState({ message: 'block' });
       }
-  })}/*
-  fetch('https://obscure-depths-14752.herokuapp.com/upload-images', {
-    method: 'post',
-    headers: {'Content-type': 'application/json'},
-    body: JSON.stringify({
-      name: 'hola'
-    })
-  })
-  .then(response => response.json())
-  .then(user => {
-    if(user){
-      console.log(user);
-     // this.props.onRouteChange('home');
-    }
-  }
-  )}
-
-  CREATE TABLE content(
-    id serial PRIMARY KEY,
-    name VARCHAR(30),
-    modelo VARCHAR(30),
-    precio VARCHAR(30),
-    link VARCHAR(110),
-    url VARCHAR(110)
-  );
+  })}
   
-*/
 
     render(){
         return(
@@ -120,14 +95,14 @@ class Agregar extends Component {
                 placeholder="tipo de accesorio"
                 onChange={(e) => this.handleTipo(e)}
               />
-              <label className="db fw6 lh-copy f6" htmlFor="email-address">Modelo</label>
+              <label className="db fw6 lh-copy f6" htmlFor="email-address">Equipo</label>
                 <input 
                 className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" 
                 type="text"
                 name="modelo"
                 id="modelo"
                 value={this.state.modelo}
-                placeholder="modelo"
+                placeholder="equipo"
                 onChange={(e) => this.handleModelo(e)}
               />
               <label className="db fw6 lh-copy f6" htmlFor="email-address">Precio</label>
