@@ -54,7 +54,7 @@ class App extends Component {
             ?
             <Eliminar />
             :
-            <Modificar />
+            <SignIn onRouteChange={this.onRouteChange} />
           )
            )
          )

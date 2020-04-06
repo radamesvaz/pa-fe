@@ -49,7 +49,7 @@ class Agregar extends Component {
     let link = this.state.link;
     let file = this.state.file;
     let formdata = new FormData();
-    formdata.append('tipo', tipo);
+    formdata.append('name', tipo);
     formdata.append('modelo', modelo);
     formdata.append('precio', precio);
     formdata.append('link', link);

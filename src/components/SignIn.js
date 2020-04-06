@@ -29,14 +29,14 @@ class SignIn extends React.Component {
     
     .then(response => response.json())
     .then(data => {
-    if(data === 'acceso garantizado'){
+    if(data === "acceso garantizado"){
         this.props.onRouteChange('home');
       }
     })
     /*
     .then(user => {
       if(user.name){
-        this.props.loadUser(user);
+        
         this.props.onRouteChange('home');
       }
     })*/
