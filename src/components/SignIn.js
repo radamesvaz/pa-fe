@@ -44,7 +44,6 @@ class SignIn extends React.Component {
 
    render(){
     const { onRouteChange } = this.props;
- //const SignIn = ({ onRouteChange }) =>{
     return(
       <article className="br3 ba b--black-10 mv4 w-100 w-50-m w-25-l mw6 shadow-5 center">
       <main className="pa4 black-80">
@@ -81,7 +80,7 @@ class SignIn extends React.Component {
         />
       </div>
     </div>
-    <p onClick={() => onRouteChange('register')} className='pointer'>Registrar</p>
+   {/* <p onClick={() => onRouteChange('register')} className='pointer'>Registrar</p> */}
   </main>
   </article>
      );

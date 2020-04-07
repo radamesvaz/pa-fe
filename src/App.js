@@ -42,7 +42,7 @@ class App extends Component {
            this.state.route === 'register'
            ?
            <Register onRouteChange={this.onRouteChange}/>
-           :(
+           :( 
             this.state.route === 'home'
           ?
             <Agregar />
@@ -55,28 +55,6 @@ class App extends Component {
           )
            )
          )
-
-/*
-         this.state.route === 'home'
-          ?
-            <Agregar />
-          :(
-            this.state.route === 'eliminar'
-            ?
-            <Eliminar />
-            :
-            <Modificar />
-          )
-        */
-       /*
-          : (
-            this.state.route === 'signout'
-            ?
-            <SignIn onRouteChange={this.onRouteChange} /> 
-            : 
-            <Register onRouteChange={this.onRouteChange}/>
-          )
-*/
        }
       </div>
     );
